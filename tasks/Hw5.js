@@ -1,5 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
+import {StatusBar} from 'expo-status-bar';
+import React, {useEffect, useState} from 'react';
 import {
     Button,
     StyleSheet,
@@ -12,8 +12,9 @@ import {
     Pressable
 } from 'react-native';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
+
 const Stack = createNativeStackNavigator();
-export default function Hw5({ navigation }) {
+export default function Hw5({navigation}) {
     return (
         <Stack.Navigator>
             <Stack.Screen name={'Todo'} component={Todo}/>
@@ -21,7 +22,8 @@ export default function Hw5({ navigation }) {
         </Stack.Navigator>
     );
 };
-function TodoLine({ el, ind, touchHandler, deleteHandler }) {
+
+function TodoLine({el, ind, touchHandler, deleteHandler}) {
     return (
         <View style={[styles.todoLine, el.isCompleted ? styles.taskCompleted : styles.taskNotCompleted]}>
             <TouchableOpacity style={styles.todoLineTouch} onPress={() => touchHandler(ind)}>
@@ -33,7 +35,8 @@ function TodoLine({ el, ind, touchHandler, deleteHandler }) {
         </View>
     );
 }
-function Todo({navigation}){
+
+function Todo({navigation}) {
     const [todos, setTodos] = useState([]);
     const [text, setText] = useState('');
     const addTodo = () => {
@@ -51,7 +54,8 @@ function Todo({navigation}){
         newTodos[index].isCompleted = !newTodos[index].isCompleted;
         setTodos(newTodos);
     };
-    const deleteHandler = (index) => {;
+    const deleteHandler = (index) => {
+        ;
         const items = [...todos];
         items.splice(index, 1);
         setTodos(items);
@@ -63,8 +67,9 @@ function Todo({navigation}){
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.input}>
-                    <TextInput style={styles.textInput} onChangeText={newText => setText(newText)} value={text}></TextInput>
-                    <Button title="Добавить" onPress={() => addTodo() }/>
+                    <TextInput style={styles.textInput} onChangeText={newText => setText(newText)}
+                               value={text}></TextInput>
+                    <Button title="Добавить" onPress={() => addTodo()}/>
                 </View>
                 <FlatList
                     data={todos}
@@ -72,8 +77,9 @@ function Todo({navigation}){
                     renderItem={({item, index}) => (
                         <TodoLine el={item} ind={index} touchHandler={touchHandler} deleteHandler={deleteHandler}/>
                     )}/>
-                <Button title='Завершенные задачи' onPress={() => navigation.navigate('Completed', {completedTodos: getCompletedTodos()})}/>
-                <StatusBar style="auto" />
+                <Button title='Завершенные задачи'
+                        onPress={() => navigation.navigate('Completed', {completedTodos: getCompletedTodos()})}/>
+                <StatusBar style="auto"/>
             </View>
         </SafeAreaView>
     );
@@ -84,7 +90,7 @@ function CompletedTasks({navigation, route}) {
         return index.toString();
     };
     return (
-        <View style={{flex:1}}>
+        <View style={{flex: 1}}>
             <Text style={styles.header}>Завершенные задачи</Text>
             <FlatList
                 data={route.params.completedTodos}
@@ -94,7 +100,7 @@ function CompletedTasks({navigation, route}) {
                         <Text style={styles.texts}>{item.text}</Text>
                     </View>
                 }/>
-            <View style={{marginBottom:70}}>
+            <View style={{marginBottom: 70}}>
                 <Button title="Go back" onPress={() => navigation.goBack()}/>
             </View>
         </View>
@@ -135,9 +141,7 @@ const styles = StyleSheet.create({
     todoLineTouch: {
         padding: 8
     },
-    input: {
-
-    },
+    input: {},
     textInput: {
         borderRadius: 8,
         borderWidth: 1,
@@ -149,5 +153,4 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 15
     }
-
 });
