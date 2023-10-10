@@ -1,6 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import {Button, StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList, SafeAreaView} from 'react-native';
+import {
+    Button,
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    TextInput,
+    FlatList,
+    SafeAreaView,
+    Pressable
+} from 'react-native';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 export default function Hw5({ navigation }) {
@@ -14,10 +24,12 @@ export default function Hw5({ navigation }) {
 function TodoLine({ el, ind, touchHandler, deleteHandler }) {
     return (
         <View style={[styles.todoLine, el.isCompleted ? styles.taskCompleted : styles.taskNotCompleted]}>
-            <TouchableOpacity onPress={() => touchHandler(ind)}>
+            <TouchableOpacity style={styles.todoLineTouch} onPress={() => touchHandler(ind)}>
                 <Text style={styles.texts}>{el.text}</Text>
             </TouchableOpacity>
-            <Button title='X' onPress={() => deleteHandler(ind)}/>
+            <Pressable onPress={() => deleteHandler(ind)}>
+                <Text style={{color: 'black'}}>X</Text>
+            </Pressable>
         </View>
     );
 }
@@ -121,7 +133,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     todoLineTouch: {
-        // padding: 8
+        padding: 8
     },
     input: {
 
@@ -134,7 +146,6 @@ const styles = StyleSheet.create({
     },
     texts: {
         flex: 3,
-        // ??
         textAlign: 'center',
         fontSize: 15
     }
