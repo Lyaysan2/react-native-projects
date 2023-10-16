@@ -4,6 +4,7 @@ import Hw2 from "./tasks/Hw2";
 import Hw3 from "./tasks/Hw3";
 import Hw4 from "./tasks/Hw4";
 import Hw5 from "./tasks/Hw5";
+import Hw6 from "./tasks/Hw6";
 import {View, Text, Button} from 'react-native';
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
@@ -24,6 +25,8 @@ function HomeScreen({navigation}) {
                     title="Hw4"/>
             <Button onPress={() => navigation.navigate('Hw5')}
                     title="Hw5"/>
+            <Button onPress={() => navigation.navigate('Hw6')}
+                    title="Hw6"/>
         </View>
     );
 }
@@ -38,6 +41,7 @@ function App() {
                 <Stack.Screen name={'Hw3'} component={Hw3}/>
                 <Stack.Screen name={'Hw4'} component={Hw4}/>
                 <Stack.Screen name={'Hw5'} component={Hw5}/>
+                <Stack.Screen name={'Hw6'} component={Hw6}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
