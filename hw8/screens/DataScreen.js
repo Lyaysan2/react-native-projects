@@ -8,7 +8,6 @@ export const DataScreen = observer(({navigation: {navigate}}) => {
         const { dataStore } = useRootStore();
 
         useEffect(() => {
-            dataStore.setDataInfo();
             dataStore.getDataInfo();
         }, []);
 

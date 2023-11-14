@@ -14,6 +14,8 @@ export class DataStore {
     getDataInfo = () => {
         this.setIsLoading(true);
 
+        this.dataService.setData();
+
         this.dataService
             .getData()
             .then(result => {
@@ -26,12 +28,6 @@ export class DataStore {
                 this.setIsLoading(false);
             });
     };
-
-    setDataInfo = () => {
-        this.setIsLoading(true);
-        this.dataService.setData()
-            .then(() => this.setIsLoading(false));
-    }
 
     removeDataInfo = async () => {
         this.dataService.removeAllData()
