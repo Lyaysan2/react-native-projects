@@ -1,27 +1,22 @@
-
 import {makeAutoObservable} from 'mobx';
 import DataService from "./DataService";
-import LocalRepository from "../../localStorage/LocalRepository";
 
 export class DataStore {
     data = [];
     isLoading = false;
     dataService;
-    localRepository;
 
     constructor() {
         this.dataService = new DataService();
-        this.localRepository = new LocalRepository('Data');
         makeAutoObservable(this);
     };
 
-    getData = () => {
+    getDataInfo = () => {
         this.setIsLoading(true);
 
         this.dataService
             .getData()
             .then(result => {
-                this.localRepository.setItems(result);
                 this.setData(result);
             })
             .catch(error => {
@@ -32,6 +27,17 @@ export class DataStore {
             });
     };
 
+    setDataInfo = () => {
+        this.setIsLoading(true);
+        this.dataService.setData()
+            .then(() => this.setIsLoading(false));
+    }
+
+    removeDataInfo = async () => {
+        this.dataService.removeAllData()
+            .then(() => this.setData([]));
+    };
+
     setIsLoading = isLoading => {
         this.isLoading = isLoading;
     }
@@ -39,9 +45,4 @@ export class DataStore {
     setData = data => {
         this.data = data;
     }
-
-    removeDataFromLocal = async () => {
-        this.localRepository.removeAll();
-        this.setData(await this.localRepository.getItems() ?? []);
-    };
 }

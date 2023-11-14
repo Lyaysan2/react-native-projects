@@ -7,7 +7,7 @@ export default class DataRepository {
         this.apiClient = new AxiosClient();
     }
 
-    getData = () => {
+    getDataFromApi = () => {
         return this.apiClient.get({ url: '/todos' });
     };
 }

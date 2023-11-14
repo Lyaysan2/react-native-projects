@@ -1,10 +1,5 @@
 import axios from "axios"
 
-// export const AxiosClient = axios.create({
-//     baseURL: 'https://jsonplaceholder.typicode.com',
-//     timeout: 10000,
-// })
-
 export default class AxiosClient {
     api;
 

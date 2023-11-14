@@ -17,7 +17,7 @@ export default class LocalRepository {
         return this.localClient.set(this.tableName, data);
     };
 
-    removeAll = () => {
+    removeAllItems = () => {
         return this.localClient.removeAll(this.tableName);
     };
 }

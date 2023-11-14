@@ -1,12 +1,5 @@
 import {observer} from "mobx-react";
-import {
-    ActivityIndicator, Button,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View
-} from "react-native";
+import {ActivityIndicator, Button, SafeAreaView, ScrollView, StyleSheet, Text, View} from "react-native";
 import {useEffect} from "react";
 import {useRootStore} from "../hooks/useRootStore";
 
@@ -15,16 +8,17 @@ export const DataScreen = observer(({navigation: {navigate}}) => {
         const { dataStore } = useRootStore();
 
         useEffect(() => {
-            dataStore.getData();
+            dataStore.setDataInfo();
+            dataStore.getDataInfo();
         }, []);
 
         return <SafeAreaView style={styles.container}>
             <Button
                 title='Remove all data from local store'
-                onPress={() => dataStore.removeDataFromLocal()}
+                onPress={() => dataStore.removeDataInfo()}
             />
             <ScrollView style={styles.content}>
-                {!dataStore.isLoading ? (
+                {!dataStore.isLoading && dataStore.data ? (
                     dataStore.data.map((data, i) => {
                         return (
                             <View key={`item_${i}`} style={styles.data}>
