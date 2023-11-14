@@ -50,6 +50,8 @@ const TodoScreen = observer(({navigation: {navigate}}) => {
                 }
                 <Button title='Завершенные задачи'
                         onPress={() => navigate('Completed')}/>
+                <Button title='Data'
+                        onPress={() => navigate('DataScreen')}/>
                 <StatusBar style="auto"/>
             </View>
         </SafeAreaView>

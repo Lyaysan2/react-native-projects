@@ -1,5 +1,6 @@
 import TodoRepository from "./TodoRepository";
 import {TodoModel} from "./TodoModel";
+import DataModel from "../data/DataModel";
 
 export default class TodoService {
     todoRepository;
@@ -11,6 +12,12 @@ export default class TodoService {
     getAndPrepareDataForStore = async () => {
         const data = this.todoRepository.getDataFromExternalStorage();
         return (await data).todoList;
+
+        // const data = await this.todoRepository.getDataFromExternalStorage();
+        //
+        // return data.todoList.slice(0, 15).map(item =>
+        //     new TodoModel(item.id, item.title, item.completed)
+        // );
     }
 
     addTodo = (todoList, index, text) => {

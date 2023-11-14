@@ -1,4 +1,4 @@
 import React from 'react'
-import {storesContext} from "../RootStore";
+import {storesContext} from "./RootStore";
 
 export const useRootStore = () => React.useContext(storesContext)
