@@ -1,10 +1,11 @@
-import {Text, View} from "react-native";
+import {Text, View} from 'react-native';
+import {useTranslation} from 'react-i18next';
 
-
-export default function SettingsScreen({ }){
-    return(
-        <View>
-            <Text>Settings</Text>
-        </View>
-    )
+export default function SettingsScreen({}) {
+  const {t} = useTranslation();
+  return (
+    <View>
+      <Text>{t('main.screens.settings')}</Text>
+    </View>
+  );
 }

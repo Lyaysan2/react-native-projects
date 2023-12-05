@@ -1,9 +1,11 @@
-import {Text, View} from "react-native";
+import {Text, View} from 'react-native';
+import {useTranslation} from 'react-i18next';
 
 export default function AboutScreen({}) {
-    return (
-        <View>
-            <Text>About</Text>
-        </View>
-    )
+  const {t} = useTranslation();
+  return (
+    <View>
+      <Text>{t('main.screens.about')}</Text>
+    </View>
+  );
 }
