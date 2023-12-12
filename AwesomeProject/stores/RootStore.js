@@ -1,5 +1,5 @@
 import React from 'react';
-import {LangStore} from './modules/lang/LangStore';
+import {LangStore} from '../modules/lang/LangStore';
 
 class RootStore {
   langStore;

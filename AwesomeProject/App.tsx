@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {DeepLinking} from './navigation/DeepLinking';
 import Navigation from './navigation/Navigation';
+import {ThemeProviders} from './modules/theme/ThemeProvider';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,14 +27,16 @@ function App() {
     });
   }, []);
   return (
-    <NavigationContainer
-      linking={DeepLinking.linking}
-      ref={Navigation.navigationRef}>
-      <Stack.Navigator>
-        <Stack.Screen name={'Home'} component={HomeScreen} />
-        <Stack.Screen name={'Hw'} component={Hw} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ThemeProviders>
+      <NavigationContainer
+        linking={DeepLinking.linking}
+        ref={Navigation.navigationRef}>
+        <Stack.Navigator>
+          <Stack.Screen name={'Home'} component={HomeScreen} />
+          <Stack.Screen name={'Hw'} component={Hw} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ThemeProviders>
   );
 }
 
