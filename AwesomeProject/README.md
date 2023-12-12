@@ -1,6 +1,10 @@
 
 
 
+https://github.com/Lyaysan2/react-native-projects/assets/70819092/e4519823-208b-4826-ba5e-eb7acb1846ed
+
+
+
 https://github.com/Lyaysan2/react-native-projects/assets/70819092/25e3366f-aaa2-4c56-9ae6-da00c0cfbe78
 
 
